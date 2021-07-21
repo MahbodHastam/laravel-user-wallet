@@ -9,19 +9,22 @@ use Illuminate\Support\Collection;
 use MahbodHastam\UserWallet\Models\UserTransactionModel;
 use MahbodHastam\UserWallet\Models\UserWalletModel;
 
-class UserWallet {
-    public static function createNewWallet(int $user_id): UserWalletModel {
+class UserWallet
+{
+    public static function createNewWallet(int $user_id): UserWalletModel
+    {
         return UserWalletModel::createNewWallet($user_id);
     }
 
-    public static function balance(UserWalletModel|string|int $wallet): Collection {
-
+    public static function balance(UserWalletModel | string | int $wallet): Collection
+    {
         return collect([
             'total' => UserWalletModel::getBalance($wallet),
         ]);
     }
 
-    public static function fill($wallet, int $amount): Model|UserWalletModel {
+    public static function fill($wallet, int $amount): Model | UserWalletModel
+    {
         $wallet = UserWalletModel::getWallet($wallet);
 
         $wallet->update([
@@ -31,7 +34,8 @@ class UserWallet {
         return $wallet;
     }
 
-    public static function charge($wallet, int $amount): Model|UserWalletModel {
+    public static function charge($wallet, int $amount): Model | UserWalletModel
+    {
         $wallet = UserWalletModel::getWallet($wallet);
 
         $wallet->update([
@@ -41,7 +45,8 @@ class UserWallet {
         return $wallet;
     }
 
-    public static function withdrawal($wallet, int $amount): Model|UserWalletModel|null {
+    public static function withdrawal($wallet, int $amount): Model | UserWalletModel | null
+    {
         $wallet = UserWalletModel::getWallet($wallet);
 
         if (($wallet->amount - $amount) < 0) {
@@ -55,7 +60,8 @@ class UserWallet {
         return $wallet;
     }
 
-    public static function send(int|string|UserWalletModel|null $sender, int|string|UserWalletModel $receiver, int $value): UserTransactionModel|Model|EloquentBuilder|EloquentCollection|null {
+    public static function send(int | string | UserWalletModel | null $sender, int | string | UserWalletModel $receiver, int $value): UserTransactionModel | Model | EloquentBuilder | EloquentCollection | null
+    {
         return UserWalletModel::createNewTransaction([
             'sender' => $sender,
             'receiver' => $receiver,
@@ -64,7 +70,8 @@ class UserWallet {
         ]);
     }
 
-    public static function makeRequest(int $value, int|string|UserWalletModel $receiver): Collection {
+    public static function makeRequest(int $value, int | string | UserWalletModel $receiver): Collection
+    {
         $transaction = UserWalletModel::createNewTransaction([
             'sender' => null,
             'receiver' => $receiver,
@@ -78,7 +85,8 @@ class UserWallet {
         ]);
     }
 
-    public static function closeRequest(int|string|UserWalletModel $sender, string $transaction_hash): UserTransactionModel {
+    public static function closeRequest(int | string | UserWalletModel $sender, string $transaction_hash): UserTransactionModel
+    {
         return UserTransactionModel::closeTransaction($sender, $transaction_hash);
     }
 }

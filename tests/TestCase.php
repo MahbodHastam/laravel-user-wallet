@@ -1,20 +1,18 @@
 <?php
 
-
 namespace MahbodHastam\UserWallet\Tests;
-
 
 use Illuminate\Foundation\Application;
 use MahbodHastam\UserWallet\Database\Migrations\create_users_wallets_table;
-use MahbodHastam\UserWallet\Database\Migrations\CreateUsersWalletTable;
 use MahbodHastam\UserWallet\Models\UserWalletModel;
 use MahbodHastam\UserWallet\Providers\UserWalletServiceProvider;
 
-abstract class TestCase extends \Orchestra\Testbench\TestCase {
-
+abstract class TestCase extends \Orchestra\Testbench\TestCase
+{
 //    public UserWalletModel $model;
 
-    public function setUp(): void {
+    public function setUp(): void
+    {
         parent::setUp();
 
 //        $this->model = new UserWalletModel;
@@ -28,7 +26,8 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase {
      * @param Application $app
      * @return array|void
      */
-    protected function getPackageProviders($app) {
+    protected function getPackageProviders($app)
+    {
         return [
             UserWalletServiceProvider::class,
         ];
@@ -39,7 +38,8 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase {
      *
      * @param Application $app
      */
-    public function getEnvironmentSetUp($app): void {
+    public function getEnvironmentSetUp($app): void
+    {
         $app['config']->set('database.default', 'luwalletdb');
         $app['config']->set('database.connections.luwalletdb', [
             'driver' => 'sqlite',
@@ -50,9 +50,10 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase {
     /**
      * Setup database
      */
-    public function setupDatabase(): void {
+    public function setupDatabase(): void
+    {
 
         // Run migrations
-        (new create_users_wallets_table)->up();
+        (new create_users_wallets_table())->up();
     }
 }

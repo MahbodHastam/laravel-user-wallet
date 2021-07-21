@@ -1,18 +1,18 @@
 <?php
 
-
 namespace MahbodHastam\UserWallet\Models;
-
 
 use Illuminate\Database\Eloquent\Model;
 use MahbodHastam\UserWallet\UserWallet;
 
-class UserTransactionModel extends Model {
+class UserTransactionModel extends Model
+{
     protected $table = 'uw_transactions';
 
     protected $guarded = [];
 
-    public static function getTransaction(string|int|UserTransactionModel $transaction): UserTransactionModel|Model|null {
+    public static function getTransaction(string | int | UserTransactionModel $transaction): UserTransactionModel | Model | null
+    {
         if ($transaction instanceof UserTransactionModel) {
             return $transaction;
         }
@@ -20,19 +20,20 @@ class UserTransactionModel extends Model {
         if (in_array(gettype($transaction), ['string', 'integer'])) {
             $findTransaction = UserTransactionModel::query()->find($transaction);
 
-            if (!$findTransaction) {
+            if (! $findTransaction) {
                 $findTransaction = UserTransactionModel::query()->where('transaction_hash', $transaction)->first();
             }
         }
 
-        if (!$findTransaction) {
+        if (! $findTransaction) {
             throw new \Error("Something went wrong: Transaction not found.");
         }
 
         return $findTransaction;
     }
 
-    public static function closeTransaction(int|string|UserWalletModel $sender, string $transaction_hash): UserTransactionModel {
+    public static function closeTransaction(int | string | UserWalletModel $sender, string $transaction_hash): UserTransactionModel
+    {
         $transaction = UserTransactionModel::getTransaction($transaction_hash);
         $sender_wallet = UserWalletModel::getWallet($sender);
 

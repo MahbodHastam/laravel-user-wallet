@@ -1,16 +1,16 @@
 <?php
 
-
 namespace MahbodHastam\UserWallet\Tests\Feature;
-
 
 use MahbodHastam\UserWallet\Models\UserTransactionModel;
 use MahbodHastam\UserWallet\Tests\TestCase;
 use MahbodHastam\UserWallet\UserWallet;
 
-class TransactionTest extends TestCase {
+class TransactionTest extends TestCase
+{
     /** @test */
-    public function create_new_transaction_for_two_wallets_and_transfer_values_between_them() {
+    public function create_new_transaction_for_two_wallets_and_transfer_values_between_them()
+    {
         $wallet1 = UserWallet::createNewWallet(1);
         $wallet2 = UserWallet::createNewWallet(2);
 
@@ -28,7 +28,8 @@ class TransactionTest extends TestCase {
     }
 
     /** @test */
-    public function make_an_open_transaction_request() {
+    public function make_an_open_transaction_request()
+    {
         $wallet = UserWallet::createNewWallet(1);
         $transaction = UserWallet::makeRequest(300, $wallet);
 
@@ -37,7 +38,8 @@ class TransactionTest extends TestCase {
     }
 
     /** @test */
-    public function make_an_open_transaction_request_and_close_that() {
+    public function make_an_open_transaction_request_and_close_that()
+    {
         $wallet1 = UserWallet::createNewWallet(1);
         $transaction = UserWallet::makeRequest(300, $wallet1);
 
@@ -48,6 +50,6 @@ class TransactionTest extends TestCase {
         $this->assertEquals(200, $wallet2->amount);
 
         $transaction = UserTransactionModel::getTransaction($transaction['transaction_hash']);
-        $this->assertTrue(!!$transaction->is_done);
+        $this->assertTrue(! ! $transaction->is_done);
     }
 }

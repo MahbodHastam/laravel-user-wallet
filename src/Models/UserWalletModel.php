@@ -1,14 +1,10 @@
 <?php
 
-
 namespace MahbodHastam\UserWallet\Models;
 
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
-use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class UserWalletModel
@@ -16,23 +12,26 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
  * @method static Model getByToken(string $token)
  * @method static UserWalletModel createNewWallet(int $user_id)
  */
-class UserWalletModel extends Model {
-
+class UserWalletModel extends Model
+{
     protected $table = 'uw_wallets';
 
     protected $guarded = [];
 
-    public function scopeCreateNewWallet(EloquentBuilder $query, int $user_id): Model|EloquentBuilder|EloquentCollection|array|null {
+    public function scopeCreateNewWallet(EloquentBuilder $query, int $user_id): Model | EloquentBuilder | EloquentCollection | array | null
+    {
         $wallet = $query->create(['user_id' => $user_id]);
 
         return $query->find($wallet->id);
     }
 
-    public function scopeGetByToken(EloquentBuilder $query, string $token): Model|null {
+    public function scopeGetByToken(EloquentBuilder $query, string $token): Model | null
+    {
         return $query->where('token', $token)->first();
     }
 
-    public static function getWallet(int|string|UserWalletModel|null $wallet_id_or_token): UserWalletModel|Model|null {
+    public static function getWallet(int | string | UserWalletModel | null $wallet_id_or_token): UserWalletModel | Model | null
+    {
         if ($wallet_id_or_token instanceof UserWalletModel) {
             return $wallet_id_or_token;
         }
@@ -44,19 +43,20 @@ class UserWalletModel extends Model {
         if (in_array(gettype($wallet_id_or_token), ['string', 'integer'])) {
             $wallet = UserWalletModel::query()->find($wallet_id_or_token);
 
-            if (!$wallet) {
+            if (! $wallet) {
                 $wallet = UserWalletModel::getByToken($wallet_id_or_token);
             }
         }
 
-        if (!$wallet) {
+        if (! $wallet) {
             throw new \Error("Something went wrong: Wallet not found.");
         }
 
         return $wallet;
     }
 
-    public static function getBalance(UserWalletModel|string|int $wallet): int|null {
+    public static function getBalance(UserWalletModel | string | int $wallet): int | null
+    {
         return UserWalletModel::getWallet($wallet)->amount;
     }
 
@@ -80,7 +80,8 @@ class UserWalletModel extends Model {
         return $findWallet->amount;
     }*/
 
-    public static function createNewTransaction(array $data): UserTransactionModel|Model|EloquentBuilder|EloquentCollection|null {
+    public static function createNewTransaction(array $data): UserTransactionModel | Model | EloquentBuilder | EloquentCollection | null
+    {
         $receiver = UserWalletModel::getWallet($data['receiver']);
         $sender = UserWalletModel::getWallet($data['sender']);
 

@@ -6,23 +6,27 @@ use MahbodHastam\UserWallet\Models\UserWalletModel;
 use MahbodHastam\UserWallet\Tests\TestCase;
 use MahbodHastam\UserWallet\UserWallet;
 
-class WalletTest extends TestCase {
+class WalletTest extends TestCase
+{
     /** @test */
-    public function model_works_fine() {
+    public function model_works_fine()
+    {
         $wallet = UserWalletModel::query()->create(['user_id' => 1, 'amount' => 5000]);
 
         $this->assertEquals(1, $wallet->user_id);
     }
 
     /** @test */
-    public function create_new_wallet() {
+    public function create_new_wallet()
+    {
         $wallet = UserWallet::createNewWallet(1);
 
-        $this->assertEquals($wallet instanceof UserWalletModel, !!$wallet);
+        $this->assertEquals($wallet instanceof UserWalletModel, ! ! $wallet);
     }
 
     /** @test */
-    public function get_wallet_balance_with_model_instance_token_and_id() {
+    public function get_wallet_balance_with_model_instance_token_and_id()
+    {
         $wallet = UserWallet::createNewWallet(1);
         $amountShouldBe = 100;
 
@@ -36,7 +40,8 @@ class WalletTest extends TestCase {
     }
 
     /** @test */
-    public function create_new_wallet_and_fill_it() {
+    public function create_new_wallet_and_fill_it()
+    {
         $wallet = UserWallet::createNewWallet(1);
 
         $walletChanged = UserWallet::fill($wallet, 3000);
@@ -45,7 +50,8 @@ class WalletTest extends TestCase {
     }
 
     /** @test */
-    public function create_new_wallet_and_charge_it() {
+    public function create_new_wallet_and_charge_it()
+    {
         $wallet = UserWallet::createNewWallet(1);
 
         $walletChanged = UserWallet::fill($wallet, 3000);
