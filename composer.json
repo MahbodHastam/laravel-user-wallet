@@ -1,36 +1,44 @@
 {
-    "name": "vendor_slug/package_slug",
-    "description": ":package_description",
+    "name": "mahbodhastam/laravel-user-wallet",
+    "description": "there's nothing yet",
     "keywords": [
-        ":vendor_name",
-        "package_slug"
+        "MahbodHastam",
+        "laravel-user-wallet"
     ],
-    "homepage": "https://github.com/vendor_slug/package_slug",
+    "homepage": "https://github.com/mahbodhastam/laravel-user-wallet",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "MahbodHastam",
+            "email": "mahbod4782@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.0"
+        "php": "^8.0",
+        "illuminate/support": "^8.0",
+        "illuminate/collections": "^8.0",
+        "illuminate/contracts": "^8.0",
+        "illuminate/database": "^8.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
+        "orchestra/testbench": "^6.19",
         "phpunit/phpunit": "^9.5",
-        "spatie/ray": "^1.28",
         "vimeo/psalm": "^4.8"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
-        }
+            "MahbodHastam\\UserWallet\\": "src",
+            "MahbodHastam\\UserWallet\\Database\\Migrations\\": "database/migrations"
+        },
+        "files": [
+            "src/helper_functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "MahbodHastam\\UserWallet\\Tests\\": "tests"
         }
     },
     "scripts": {
