@@ -3,7 +3,6 @@
 namespace MahbodHastam\UserWallet\Tests\Feature;
 
 use MahbodHastam\UserWallet\Models\UserTransactionModel;
-use MahbodHastam\UserWallet\Models\UserWalletModel;
 use MahbodHastam\UserWallet\Tests\TestCase;
 use MahbodHastam\UserWallet\UserWallet;
 
