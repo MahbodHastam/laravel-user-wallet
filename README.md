@@ -1,9 +1,9 @@
 # Laravel User Wallet
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/mahbodhastam/laravel-user-wallet.svg?style=flat-square)](https://packagist.org/packages/mahbodhastam/laravel-user-wallet)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/mahbodhastam/laravel-user-wallet/run-tests?label=tests)](https://github.com/mahbodhastam/laravel-user-wallet/actions?query=workflow%3ATests+branch%3Amaster)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/mahbodhastam/laravel-user-wallet/Check%20&%20fix%20styling?label=code%20style)](https://github.com/mahbodhastam/laravel-user-wallet/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
-[![Total Downloads](https://img.shields.io/packagist/dt/mahbodhastam/laravel-user-wallet.svg?style=flat-square)](https://packagist.org/packages/mahbodhastam/laravel-user-wallet)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/mahbodhastam/laravel-user-wallet?include_prereleases&style=for-the-badge)](https://packagist.org/packages/mahbodhastam/laravel-user-wallet)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/mahbodhastam/laravel-user-wallet/run-tests?label=tests&style=for-the-badge)](https://github.com/mahbodhastam/laravel-user-wallet/actions?query=workflow%3ATests+branch%3Amaster)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/mahbodhastam/laravel-user-wallet/Check%20&%20fix%20styling?label=code%20style&style=for-the-badge)](https://github.com/mahbodhastam/laravel-user-wallet/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/mahbodhastam/laravel-user-wallet.svg?style=for-the-badge)](https://packagist.org/packages/mahbodhastam/laravel-user-wallet)
 
 ---
 
