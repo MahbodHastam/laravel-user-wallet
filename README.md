@@ -21,14 +21,63 @@ composer require mahbodhastam/laravel-user-wallet
 
 ## Usage
 
+- #### Create New Wallet
+
 ```php
 use MahbodHastam\UserWallet\UserWallet;
 
-$wallet = UserWallet::createNewWallet();
+$wallet = UserWallet::createNewWallet(user_id: 1);
 
 $amount = $wallet->amount;
 $token = $wallet->token;
 ```
+
+- #### Get wallet's balance
+
+```php
+$balance = UserWallet::balance($wallet)['total'];
+```
+
+- #### Change wallet's amount
+
+```php
+UserWallet::fill($wallet, 100);
+```
+
+- #### Charge the wallet
+
+```php
+UserWallet::charge($wallet, 500);
+```
+
+- #### Send
+
+```php
+UserWallet::send(
+    sender: $wallet1,
+    receiver: $wallet2,
+    value: 50
+);
+```
+
+- #### Open a request
+
+```php
+$transaction = UserWallet::makeRequest(
+    value: 300,
+    receiver: $wallet
+);
+
+// Keep it
+$hash = $transaction->transaction_hash;
+
+UserWallet::closeRequest(
+    sender: $wallet,
+    transaction_hash: $hash
+);
+```
+
+> See the [Tests](tests) for more examples.
 
 ## Testing
 
@@ -40,20 +89,9 @@ composer test
 
 See [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-<!--
 ## Contributing
 
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
--->
-
-## Credits
-
-- [MahbodHastam](https://github.com/MahbodHastam)
-- [All Contributors](../../contributors)
 
 ## License
 
