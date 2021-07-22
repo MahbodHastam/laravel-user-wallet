@@ -60,4 +60,13 @@ class WalletTest extends TestCase
         $walletChanged = UserWallet::charge($walletChanged, 3000);
         $this->assertEquals(6000, $walletChanged->amount);
     }
+
+    /** @test */
+    public function get_wallet() {
+        $wallet = UserWallet::createNewWallet(1);
+
+        $wallet = UserWallet::getWallet($wallet->token);
+
+        $this->assertTrue(gettype($wallet) === 'object');
+    }
 }
