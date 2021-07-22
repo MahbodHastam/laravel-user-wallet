@@ -1,6 +1,6 @@
 {
     "name": "mahbodhastam/laravel-user-wallet",
-    "description": "there's nothing yet",
+    "description": "This package allows you to create wallet for the users.",
     "keywords": [
         "MahbodHastam",
         "laravel-user-wallet"
