@@ -62,7 +62,8 @@ class WalletTest extends TestCase
     }
 
     /** @test */
-    public function get_wallet() {
+    public function get_wallet()
+    {
         $wallet = UserWallet::createNewWallet(1);
 
         $wallet = UserWallet::getWallet($wallet->token);
