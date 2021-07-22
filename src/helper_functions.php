@@ -3,6 +3,6 @@
 if (! function_exists('createHash')) {
     function createHash(): string
     {
-        return hash('sha256', uniqid(time()));
+        return hash('sha256', uniqid((string) time()));
     }
 }

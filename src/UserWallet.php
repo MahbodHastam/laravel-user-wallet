@@ -60,7 +60,7 @@ class UserWallet
         return $wallet;
     }
 
-    public static function send(int | string | UserWalletModel | null $sender, int | string | UserWalletModel $receiver, int $value): UserTransactionModel | Model | EloquentBuilder | EloquentCollection | null
+    public static function send(int | string | UserWalletModel | null $sender, int | string | UserWalletModel $receiver, int $value): UserTransactionModel | Model | EloquentBuilder | EloquentCollection | array | null
     {
         return UserWalletModel::createNewTransaction([
             'sender' => $sender,
@@ -79,7 +79,7 @@ class UserWallet
         ]);
 
         return collect([
-            'transaction_hash' => $transaction->transaction_hash,
+            'transaction_hash' => $transaction['transaction_hash'],
             'value' => $value,
             'receiver_id' => $receiver->id,
         ]);

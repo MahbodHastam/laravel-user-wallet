@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class UserWalletModel
  * @package MahbodHastam\UserWallet\Models
- * @method static Model getByToken(string $token)
+ * @method static Model getByToken(int|string $token)
  * @method static UserWalletModel createNewWallet(int $user_id)
  */
 class UserWalletModel extends Model
@@ -22,7 +22,7 @@ class UserWalletModel extends Model
     {
         $wallet = $query->create(['user_id' => $user_id]);
 
-        return $query->find($wallet->id);
+        return $query->find($wallet['id']);
     }
 
     public function scopeGetByToken(EloquentBuilder $query, string $token): Model | null
@@ -60,27 +60,7 @@ class UserWalletModel extends Model
         return UserWalletModel::getWallet($wallet)->amount;
     }
 
-    /*public static function getBalance(UserWalletModel|string|int $wallet): int|null {
-        if ($wallet instanceof UserWalletModel) {
-            return $wallet->amount;
-        }
-
-        if (in_array(gettype($wallet), ['string', 'integer'])) {
-            $findWallet = UserWalletModel::query()->find($wallet);
-
-            if (!$findWallet) {
-                $findWallet = UserWalletModel::getByToken($wallet);
-            }
-        }
-
-        if (!$findWallet) {
-            throw new \Error("Something went wrong: Wallet not found.");
-        }
-
-        return $findWallet->amount;
-    }*/
-
-    public static function createNewTransaction(array $data): UserTransactionModel | Model | EloquentBuilder | EloquentCollection | null
+    public static function createNewTransaction(array $data): UserTransactionModel | EloquentBuilder | EloquentCollection | Model | array | null
     {
         $receiver = UserWalletModel::getWallet($data['receiver']);
         $sender = UserWalletModel::getWallet($data['sender']);
@@ -108,6 +88,6 @@ class UserWalletModel extends Model
             'is_done' => $data['is_done'] ?? false,
         ]);
 
-        return UserTransactionModel::query()->find($transaction->id);
+        return UserTransactionModel::query()->find($transaction['id']);
     }
 }
