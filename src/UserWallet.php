@@ -16,7 +16,8 @@ class UserWallet
         return UserWalletModel::createNewWallet($user_id);
     }
 
-    public static function getWallet(int|string $wallet_id): Model | UserWalletModel | null {
+    public static function getWallet(int | string $wallet_id): Model | UserWalletModel | null
+    {
         return UserWalletModel::getWallet($wallet_id);
     }
 
