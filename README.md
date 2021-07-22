@@ -32,6 +32,12 @@ $amount = $wallet->amount;
 $token = $wallet->token;
 ```
 
+- #### Get wallet with the token/id
+
+```php
+$wallet = UserWallet::getWallet('abc');
+```
+
 - #### Get wallet's balance
 
 ```php
