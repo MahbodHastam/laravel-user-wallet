@@ -21,7 +21,7 @@ composer require mahbodhastam/laravel-user-wallet
 
 ## Usage
 
-- #### Create New Wallet
+-   #### Create New Wallet
 
 ```php
 use MahbodHastam\UserWallet\UserWallet;
@@ -32,31 +32,31 @@ $amount = $wallet->amount;
 $token = $wallet->token;
 ```
 
-- #### Get wallet with the token/id
+-   #### Get wallet with the token/id
 
 ```php
 $wallet = UserWallet::getWallet('abc');
 ```
 
-- #### Get wallet's balance
+-   #### Get wallet's balance
 
 ```php
 $balance = UserWallet::balance($wallet)['total'];
 ```
 
-- #### Change wallet's amount
+-   #### Change wallet's amount
 
 ```php
 UserWallet::fill($wallet, 100);
 ```
 
-- #### Charge the wallet
+-   #### Charge the wallet
 
 ```php
 UserWallet::charge($wallet, 500);
 ```
 
-- #### Send
+-   #### Send
 
 ```php
 UserWallet::send(
@@ -66,7 +66,7 @@ UserWallet::send(
 );
 ```
 
-- #### Open a request
+-   #### Open a request
 
 ```php
 $transaction = UserWallet::makeRequest(
@@ -90,6 +90,10 @@ UserWallet::closeRequest(
 ```bash
 composer test
 ```
+
+## Todos
+
+-   [ ] Blade Directives
 
 ## Changelog
 
