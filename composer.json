@@ -1,6 +1,7 @@
 {
     "name": "mahbodhastam/laravel-user-wallet",
     "description": "This package allows you to create wallet for the users",
+    "version": "v1.1.1",
     "keywords": [
         "MahbodHastam",
         "laravel-user-wallet"
@@ -39,6 +40,13 @@
     "autoload-dev": {
         "psr-4": {
             "MahbodHastam\\UserWallet\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MahbodHastam\\UserWallet\\Providers\\UserWalletServiceProvider"
+            ]
         }
     },
     "scripts": {

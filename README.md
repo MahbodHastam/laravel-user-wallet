@@ -83,6 +83,14 @@ UserWallet::closeRequest(
 );
 ```
 
+- #### Get the balance in blade
+
+```blade
+@userWalletBalance($wallet)
+
+{{-- $wallet can be wallet's `id`, `token` or an instance from UserWalletModel --}}
+```
+
 > See the [Tests](tests) for more examples.
 
 ## Testing
@@ -93,7 +101,7 @@ composer test
 
 ## Todos
 
--   [ ] Blade Directives
+-   [x] Blade Directives
 
 ## Changelog
 

@@ -32,27 +32,7 @@ class UserWalletModel extends Model
 
     public static function getWallet(int | string | UserWalletModel | null $wallet_id_or_token): UserWalletModel | Model | null
     {
-        if ($wallet_id_or_token instanceof UserWalletModel) {
-            return $wallet_id_or_token;
-        }
-
-        if (is_null($wallet_id_or_token)) {
-            return null;
-        }
-
-        if (in_array(gettype($wallet_id_or_token), ['string', 'integer'])) {
-            $wallet = UserWalletModel::query()->find($wallet_id_or_token);
-
-            if (! $wallet) {
-                $wallet = UserWalletModel::getByToken($wallet_id_or_token);
-            }
-        }
-
-        if (! $wallet) {
-            throw new \Error("Something went wrong: Wallet not found.");
-        }
-
-        return $wallet;
+        return get_wallet($wallet_id_or_token);
     }
 
     public static function getBalance(UserWalletModel | string | int $wallet): int | null
