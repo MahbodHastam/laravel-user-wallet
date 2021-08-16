@@ -2,7 +2,6 @@
 
 namespace Mahbodhastam\UserWallet\Providers;
 
-use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use MahbodHastam\UserWallet\Models\UserWalletModel;

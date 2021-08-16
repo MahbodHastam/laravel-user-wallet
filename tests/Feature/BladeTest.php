@@ -3,7 +3,6 @@
 namespace MahbodHastam\UserWallet\Tests\Feature;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
-use Illuminate\Support\Facades\Artisan;
 use MahbodHastam\UserWallet\Models\UserWalletModel;
 use MahbodHastam\UserWallet\Tests\TestCase;
 use MahbodHastam\UserWallet\UserWallet;
@@ -16,7 +15,7 @@ class BladeTest extends TestCase
     {
         parent::setUp();
 
-        $walletModel = new UserWalletModel;
+        $walletModel = new UserWalletModel();
 
         $walletModel->query()->create(['user_id' => 1, 'amount' => 1000]);
     }
